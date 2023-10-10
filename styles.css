@@ -112,10 +112,11 @@ button {
   transition: background-color 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 1.3rem;
+  width: 100%;
 }
 
 button:hover {
-  background-color: #732b91;
+  background-color: var(--light-blue);
 }
 
 .link {
