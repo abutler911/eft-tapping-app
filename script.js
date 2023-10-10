@@ -189,8 +189,16 @@ document.getElementById("start-button").addEventListener("click", () => {
   showPage("affirmation-page");
 });
 
+showPage("landing-page");
+
+document.getElementById("start-button").addEventListener("click", () => {
+  showPage("affirmation-page");
+  // Call updateDisplay when the Start App button is clicked
+  updateDisplay();
+});
+
 // Update display initially
-updateDisplay();
+// updateDisplay();
 
 // Add event listeners
 prevButton.addEventListener("click", moveToPrev);
