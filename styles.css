@@ -68,17 +68,16 @@ button:hover {
   background-color: #732b91;
 }
 
-/* Add this to your CSS */
 @keyframes breathe {
   0%,
   100% {
     background-color: #ffffff;
-  } /* starting color */
-  50% {
+  }
+  46.6% {
     background-color: #00ff00;
-  } /* color at full breath */
+  }
 }
 
 #affirmation-display.breathe {
-  animation: breathe 15s ease-in-out infinite;
+  animation: breathe 15s ease-in-out 1;
 }
