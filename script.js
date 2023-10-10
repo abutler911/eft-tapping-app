@@ -153,6 +153,22 @@ function togglePause() {
   }
 }
 
+function showPage(pageId) {
+  const pages = ["landing-page", "affirmation-page"];
+  pages.forEach((id) => {
+    document.getElementById(id).style.display =
+      id === pageId ? "block" : "none";
+  });
+}
+
+// Initial load shows landing page
+showPage("landing-page");
+
+// Start button event listener to switch to affirmation page
+document.getElementById("start-button").addEventListener("click", () => {
+  showPage("affirmation-page");
+});
+
 // Update display initially
 updateDisplay();
 
