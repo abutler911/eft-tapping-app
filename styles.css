@@ -57,24 +57,34 @@ h3 {
   padding: 0px 20px;
   border-radius: 10px;
 }
-
-/* Affirmation display */
-#affirmation-display {
+#affirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 80%;
   min-height: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-top: 20px;
-  font-size: 2rem;
-  margin-bottom: 20px;
 }
-
+/* Affirmation display */
+#affirmation-display {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+}
+#section-name {
+  font-size: 0.8rem;
+  align-self: flex-start;
+  /* margin-bottom: 10px; */
+  color: #555;
+}
 /* Button container */
 .button-container {
   display: flex;

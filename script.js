@@ -60,22 +60,23 @@ let countdown;
 let countdownValue = 5;
 
 const displayElement = document.getElementById("affirmation-display");
+const sectionNameElement = document.getElementById("section-name");
 const timerElement = document.getElementById("timer");
 const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
 const pauseButton = document.getElementById("pause-button");
 
 function updateDisplay() {
-  if (
-    currentPhraseIndex < affirmationSections[currentSectionIndex].phrases.length
-  ) {
-    displayElement.textContent =
-      affirmationSections[currentSectionIndex].phrases[currentPhraseIndex];
+  const currentSection = affirmationSections[currentSectionIndex];
+  if (currentPhraseIndex < currentSection.phrases.length) {
+    displayElement.textContent = currentSection.phrases[currentPhraseIndex];
+    sectionNameElement.textContent = currentSection.section; // Set the section name
     countdownValue = 7;
     displayElement.classList.remove("breathe");
   } else {
     displayElement.textContent =
       "Place a hand on your heart and belly, and take three deep breaths.";
+    sectionNameElement.textContent = ""; // Clear the section name during the breathing part
     countdownValue = 15;
     displayElement.classList.add("breathe");
   }
