@@ -71,9 +71,13 @@ function updateDisplay() {
   ) {
     displayElement.textContent =
       affirmationSections[currentSectionIndex].phrases[currentPhraseIndex];
+    countdownValue = 7; // Set timer to 7 seconds for affirmations
+    displayElement.classList.remove("breathe"); // Remove the 'breathe' class
   } else {
     displayElement.textContent =
       "Place a hand on your heart and belly, and take three deep breaths.";
+    countdownValue = 15; // Set timer to 15 seconds for breathing part
+    displayElement.classList.add("breathe"); // Add the 'breathe' class
   }
 
   if (!isPaused) {
@@ -83,7 +87,6 @@ function updateDisplay() {
 
 function resetTimer() {
   clearInterval(countdown);
-  countdownValue = 5; // Reset timer to 5 seconds
   updateTimer();
   if (!isPaused) {
     countdown = setInterval(() => {
