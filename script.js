@@ -53,6 +53,17 @@ const affirmationSections = [
   },
 ];
 
+const meridianPoints = [
+  "Top of the head",
+  "Third eye",
+  "Temporal",
+  "Under the eye",
+  "Under nose",
+  "Chin",
+  "Collarbone",
+  "Under arm",
+];
+
 let currentSectionIndex = 0;
 let currentPhraseIndex = 0;
 let isPaused = false;
@@ -69,16 +80,25 @@ const pauseButton = document.getElementById("pause-button");
 function updateDisplay() {
   const affirmationContainer = document.getElementById("affirmation-container");
   const currentSection = affirmationSections[currentSectionIndex];
+  const meridianElement = document.getElementById("meridian-point"); // New element for the meridian point
 
   if (currentPhraseIndex < currentSection.phrases.length) {
     displayElement.textContent = currentSection.phrases[currentPhraseIndex];
     sectionNameElement.textContent = currentSection.section;
+
+    // Display the meridian point
+    meridianElement.textContent = `Meridian Point: ${meridianPoints[currentPhraseIndex]}`;
+
     countdownValue = 7;
     affirmationContainer.classList.remove("breathe");
   } else {
     displayElement.textContent =
       "Place a hand on your heart and belly, and take three deep breaths.";
     sectionNameElement.textContent = "";
+
+    // Clear the meridian point when not applicable
+    meridianElement.textContent = "";
+
     countdownValue = 15;
     affirmationContainer.classList.add("breathe");
   }

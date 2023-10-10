@@ -1,7 +1,7 @@
 :root {
   --dark-blue: #29579d;
   --light-blue: #8aaccf;
-  --green: #97ef99;
+  --green: #66f368;
   --white: #fff;
   --black: #000;
   --font-small: 0.8rem;
@@ -14,15 +14,10 @@
   src: url("fonts/Cinzel-Regular.otf") format("opentype");
 }
 
-@font-face {
-  font-family: "Brilliant Mastaka";
-  src: url("fonts/Brilliant.ttf") format("truetype");
-}
-
 body {
   font-family: "Cinzel", serif;
   background-color: var(--white);
-  color: #333;
+  color: #382400;
   margin: 0;
   padding: 0;
   display: flex;
@@ -43,16 +38,17 @@ body {
 }
 
 .header h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--green);
 }
 
 .affirmation-header {
   text-align: center;
   padding: 20px;
-  color: var(--black);
-  font-size: 3rem;
+  color: var(--white);
+  font-size: 2.3rem;
   line-height: 1.5;
+  background-color: var(--light-blue);
 }
 #timer-container {
   display: flex;
@@ -62,7 +58,7 @@ body {
 }
 
 #timer {
-  font-size: 5rem;
+  font-size: 3rem;
   color: var(--green);
 }
 
@@ -94,6 +90,12 @@ body {
   font-size: 1rem;
   text-align: center;
   color: #555;
+}
+#meridian-point {
+  font-size: var(--font-small);
+  text-align: center;
+  color: #555;
+  margin-top: 10px;
 }
 
 .button-container {
