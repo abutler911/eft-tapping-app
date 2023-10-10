@@ -47,6 +47,56 @@ hr {
   border-top: 3px solid var(--green);
   border-radius: 9px;
 }
+/* Container for dropdown and button */
+.control-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for button */
+#start-button {
+  margin-top: 30px; /* Add some margin for spacing */
+}
+.label {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.tip {
+  font-size: 0.7rem;
+}
+/* Style the dropdown */
+#duration {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: var(--light-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: auto;
+}
+
+/* Style dropdown options */
+#duration option {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+/* Add hover effect */
+#duration:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Add focus effect */
+#duration:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
 
 .affirmation-header {
   text-align: center;

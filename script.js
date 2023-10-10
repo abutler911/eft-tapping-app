@@ -68,7 +68,7 @@ let currentSectionIndex = 0;
 let currentPhraseIndex = 0;
 let isPaused = false;
 let countdown;
-let countdownValue = 5;
+let defaultCountdownValue = 7;
 
 const displayElement = document.getElementById("affirmation-display");
 const sectionNameElement = document.getElementById("section-name");
@@ -80,26 +80,20 @@ const pauseButton = document.getElementById("pause-button");
 function updateDisplay() {
   const affirmationContainer = document.getElementById("affirmation-container");
   const currentSection = affirmationSections[currentSectionIndex];
-  const meridianElement = document.getElementById("meridian-point"); // New element for the meridian point
+  const meridianElement = document.getElementById("meridian-point");
 
   if (currentPhraseIndex < currentSection.phrases.length) {
     displayElement.textContent = currentSection.phrases[currentPhraseIndex];
     sectionNameElement.textContent = currentSection.section;
-
-    // Display the meridian point
     meridianElement.innerHTML = `Meridian Point: <span style="color: #c7522a;">${meridianPoints[currentPhraseIndex]}</span>`;
-
-    countdownValue = 7;
+    countdownValue = defaultCountdownValue; // Set to user-selected value
     affirmationContainer.classList.remove("breathe");
   } else {
     displayElement.textContent =
       "Place a hand on your heart and belly, and take three deep breaths.";
     sectionNameElement.textContent = "";
-
-    // Clear the meridian point when not applicable
     meridianElement.textContent = "";
-
-    countdownValue = 15;
+    countdownValue = 15; // Set to fixed value for breathing part
     affirmationContainer.classList.add("breathe");
   }
 
@@ -184,24 +178,14 @@ function showPage(pageId) {
   });
 }
 
-// Initial load shows landing page
-showPage("landing-page");
-
-// Start button event listener to switch to affirmation page
-document.getElementById("start-button").addEventListener("click", () => {
-  showPage("affirmation-page");
-});
-
 showPage("landing-page");
 
 document.getElementById("start-button").addEventListener("click", () => {
+  const selectedDuration = document.getElementById("duration").value;
+  defaultCountdownValue = parseInt(selectedDuration, 10);
   showPage("affirmation-page");
-  // Call updateDisplay when the Start App button is clicked
   updateDisplay();
 });
-
-// Update display initially
-// updateDisplay();
 
 // Add event listeners
 prevButton.addEventListener("click", moveToPrev);
