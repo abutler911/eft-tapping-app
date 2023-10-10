@@ -75,51 +75,55 @@ function updateDisplay() {
     displayElement.textContent =
       "Place a hand on your heart and belly, and take three deep breaths.";
   }
-  resetTimer();
+
+  if (!isPaused) {
+    resetTimer();
+  }
 }
 
 function resetTimer() {
   clearInterval(countdown);
   countdownValue = 5; // Reset timer to 5 seconds
   updateTimer();
-  countdown = setInterval(() => {
-    countdownValue--;
-    updateTimer();
-    if (countdownValue <= 0) {
-      clearInterval(countdown);
-      moveToNext(); // Move to the next affirmation
-    }
-  }, 1000);
+  if (!isPaused) {
+    countdown = setInterval(() => {
+      countdownValue--;
+      updateTimer();
+      if (countdownValue <= 0) {
+        clearInterval(countdown);
+        moveToNext(); // Move to the next affirmation
+      }
+    }, 1000);
+  }
 }
-
 function updateTimer() {
   timerElement.textContent = countdownValue ? `${countdownValue}s` : "";
 }
+
 function moveToNext() {
-  if (!isPaused) {
-    if (
-      currentPhraseIndex <
-      affirmationSections[currentSectionIndex].phrases.length
-    ) {
-      currentPhraseIndex++;
-    } else {
-      currentSectionIndex++;
-      currentPhraseIndex = 0;
-    }
-
-    if (currentSectionIndex >= affirmationSections.length) {
-      // Reset if reached the end
-      currentSectionIndex = 0;
-      currentPhraseIndex = 0;
-    }
-
-    updateDisplay();
+  // Logic for moving to the next affirmation, same as before but without the pause check
+  if (
+    currentPhraseIndex < affirmationSections[currentSectionIndex].phrases.length
+  ) {
+    currentPhraseIndex++;
+  } else {
+    currentSectionIndex++;
+    currentPhraseIndex = 0;
   }
+
+  if (currentSectionIndex >= affirmationSections.length) {
+    // Reset if reached the end
+    currentSectionIndex = 0;
+    currentPhraseIndex = 0;
+  }
+
+  updateDisplay();
 }
 
 function moveToPrev() {
-  if (currentIndex > 0) {
-    currentIndex--;
+  // Only work if paused or no timer is active
+  if (isPaused || !countdown) {
+    currentPhraseIndex = Math.max(currentPhraseIndex - 1, 0); // Don't go below 0
     updateDisplay();
   }
 }
@@ -127,6 +131,15 @@ function moveToPrev() {
 function togglePause() {
   isPaused = !isPaused;
   pauseButton.textContent = isPaused ? "Resume" : "Pause";
+
+  if (isPaused) {
+    // Clear the timer and remove it from the page
+    clearInterval(countdown);
+    timerElement.textContent = "";
+  } else {
+    // Restart the timer if unpaused
+    resetTimer();
+  }
 }
 
 // Update display initially
@@ -136,6 +149,3 @@ updateDisplay();
 prevButton.addEventListener("click", moveToPrev);
 nextButton.addEventListener("click", moveToNext);
 pauseButton.addEventListener("click", togglePause);
-
-// Automatic progression
-setInterval(moveToNext, 5000); // Move to next affirmation every 5 seconds
