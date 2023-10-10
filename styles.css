@@ -53,9 +53,6 @@ h3 {
 #timer {
   font-size: 2rem;
   color: #e44d26;
-  border: 2px solid gray;
-  padding: 0px 20px;
-  border-radius: 10px;
 }
 #affirmation-container {
   display: flex;
@@ -81,10 +78,11 @@ h3 {
 }
 #section-name {
   font-size: 0.8rem;
-  align-self: flex-start;
-  /* margin-bottom: 10px; */
+  /* align-self: flex-start; */
+  text-align: center;
   color: #555;
 }
+
 /* Button container */
 .button-container {
   display: flex;
@@ -119,6 +117,10 @@ button:hover {
   text-decoration: none;
   font-size: 1.2rem;
 }
+#affirmation-container.breathe {
+  animation: breathe 15s ease-in-out 1;
+}
+
 @keyframes breathe {
   0%,
   100% {
@@ -127,8 +129,4 @@ button:hover {
   46.6% {
     background-color: #00ff00;
   }
-}
-
-#affirmation-display.breathe {
-  animation: breathe 15s ease-in-out 1;
 }

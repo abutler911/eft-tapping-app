@@ -67,18 +67,20 @@ const nextButton = document.getElementById("next-button");
 const pauseButton = document.getElementById("pause-button");
 
 function updateDisplay() {
+  const affirmationContainer = document.getElementById("affirmation-container");
   const currentSection = affirmationSections[currentSectionIndex];
+
   if (currentPhraseIndex < currentSection.phrases.length) {
     displayElement.textContent = currentSection.phrases[currentPhraseIndex];
-    sectionNameElement.textContent = currentSection.section; // Set the section name
+    sectionNameElement.textContent = currentSection.section;
     countdownValue = 7;
-    displayElement.classList.remove("breathe");
+    affirmationContainer.classList.remove("breathe");
   } else {
     displayElement.textContent =
       "Place a hand on your heart and belly, and take three deep breaths.";
-    sectionNameElement.textContent = ""; // Clear the section name during the breathing part
+    sectionNameElement.textContent = "";
     countdownValue = 15;
-    displayElement.classList.add("breathe");
+    affirmationContainer.classList.add("breathe");
   }
 
   if (!isPaused) {
