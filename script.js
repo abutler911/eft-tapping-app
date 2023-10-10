@@ -71,13 +71,13 @@ function updateDisplay() {
   ) {
     displayElement.textContent =
       affirmationSections[currentSectionIndex].phrases[currentPhraseIndex];
-    countdownValue = 7; // Set timer to 7 seconds for affirmations
-    displayElement.classList.remove("breathe"); // Remove the 'breathe' class
+    countdownValue = 7;
+    displayElement.classList.remove("breathe");
   } else {
     displayElement.textContent =
       "Place a hand on your heart and belly, and take three deep breaths.";
-    countdownValue = 15; // Set timer to 15 seconds for breathing part
-    displayElement.classList.add("breathe"); // Add the 'breathe' class
+    countdownValue = 15;
+    displayElement.classList.add("breathe");
   }
 
   if (!isPaused) {
@@ -94,17 +94,16 @@ function resetTimer() {
       updateTimer();
       if (countdownValue <= 0) {
         clearInterval(countdown);
-        moveToNext(); // Move to the next affirmation
+        moveToNext();
       }
     }, 1000);
   }
 }
 function updateTimer() {
-  timerElement.textContent = countdownValue ? `${countdownValue}s` : "";
+  timerElement.textContent = countdownValue ? `${countdownValue} seconds` : "";
 }
 
 function moveToNext() {
-  // Logic for moving to the next affirmation, same as before but without the pause check
   if (
     currentPhraseIndex < affirmationSections[currentSectionIndex].phrases.length
   ) {
@@ -124,9 +123,15 @@ function moveToNext() {
 }
 
 function moveToPrev() {
-  // Only work if paused or no timer is active
-  if (isPaused || !countdown) {
-    currentPhraseIndex = Math.max(currentPhraseIndex - 1, 0); // Don't go below 0
+  // Only work if paused
+  if (isPaused) {
+    if (currentPhraseIndex > 0) {
+      currentPhraseIndex--;
+    } else if (currentSectionIndex > 0) {
+      currentSectionIndex--;
+      currentPhraseIndex =
+        affirmationSections[currentSectionIndex].phrases.length - 1;
+    }
     updateDisplay();
   }
 }
