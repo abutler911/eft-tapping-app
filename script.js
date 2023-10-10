@@ -100,7 +100,7 @@ function resetTimer() {
   }
 }
 function updateTimer() {
-  timerElement.textContent = countdownValue ? `${countdownValue} seconds` : "";
+  timerElement.textContent = countdownValue ? `${countdownValue}` : "";
 }
 
 function moveToNext() {
