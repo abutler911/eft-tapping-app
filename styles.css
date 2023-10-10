@@ -32,7 +32,7 @@ body {
   text-align: center;
   padding: 20px;
   color: var(--black);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
 }
@@ -40,6 +40,12 @@ body {
 .header h1 {
   font-size: 2rem;
   color: var(--green);
+}
+
+hr {
+  border: none;
+  border-top: 3px solid var(--green);
+  border-radius: 9px;
 }
 
 .affirmation-header {
