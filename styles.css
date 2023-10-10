@@ -104,6 +104,11 @@ button:hover {
   background-color: #732b91;
 }
 
+.link {
+  color: #e44d26;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
 @keyframes breathe {
   0%,
   100% {
