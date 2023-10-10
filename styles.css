@@ -1,7 +1,7 @@
 :root {
   --dark-blue: #29579d;
   --light-blue: #8aaccf;
-  --green: #66f368;
+  --green: #74a892;
   --white: #fff;
   --black: #000;
   --font-small: 0.8rem;
@@ -16,7 +16,7 @@
 
 body {
   font-family: "Cinzel", serif;
-  background-color: var(--white);
+  background-color: #fbf2c4;
   color: #382400;
   margin: 0;
   padding: 0;
@@ -70,7 +70,7 @@ body {
   min-height: 20vh;
   background-color: var(--light-blue);
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 10px;
   margin-top: 20px;
   margin: 20px auto;
@@ -87,15 +87,16 @@ body {
 }
 
 #section-name {
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: center;
   color: #555;
+  text-transform: uppercase;
 }
 #meridian-point {
-  font-size: var(--font-small);
+  font-size: 0.8rem;
   text-align: center;
   color: #555;
-  margin-top: 10px;
+  text-transform: uppercase;
 }
 
 .button-container {
@@ -112,7 +113,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   font-size: 1.3rem;
   width: 100%;
 }
@@ -120,7 +121,13 @@ button {
 button:hover {
   background-color: var(--light-blue);
 }
-
+.footer {
+  text-align: center;
+  font-family: "Cinzel", serif;
+}
+.footer p {
+  font-size: 0.7rem;
+}
 .link {
   color: var(--green);
   text-decoration: none;

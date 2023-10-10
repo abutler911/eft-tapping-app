@@ -87,7 +87,7 @@ function updateDisplay() {
     sectionNameElement.textContent = currentSection.section;
 
     // Display the meridian point
-    meridianElement.textContent = `Meridian Point: ${meridianPoints[currentPhraseIndex]}`;
+    meridianElement.innerHTML = `Meridian Point: <span style="color: #c7522a;">${meridianPoints[currentPhraseIndex]}</span>`;
 
     countdownValue = 7;
     affirmationContainer.classList.remove("breathe");
@@ -160,16 +160,19 @@ function moveToPrev() {
 }
 
 function togglePause() {
+  const pauseIcon = document.querySelector("#pause-button i");
   isPaused = !isPaused;
-  pauseButton.textContent = isPaused ? "Resume" : "Pause";
 
   if (isPaused) {
-    // Clear the timer and remove it from the page
+    // Clear the timer but keep the space
     clearInterval(countdown);
-    timerElement.textContent = "";
+    timerElement.innerHTML = "&nbsp;";
+    pauseButton.textContent = "Resume";
+    pauseIcon.classList.remove("fas", "fa-pause");
   } else {
     // Restart the timer if unpaused
     resetTimer();
+    pauseButton.innerHTML = '<i class="fas fa-pause"></i>';
   }
 }
 
