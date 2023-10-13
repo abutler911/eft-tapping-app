@@ -1,0 +1,19 @@
+{
+  "name": "eft-tapping-app",
+  "version": "1.0.0",
+  "description": "This app is designed to help you manage stress, anxiety, and emotional imbalances through the Emotional Freedom Techniques (EFT) Tapping method. The app guides you through various affirmations focused on different emotional and mental aspects.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Andrew Butler",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
