@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const connectDB = require("./config/db");
 const indexRoutes = require("./routes/indexRoutes");
+const signupRoutes = require("./routes/signupRoutes");
 
 const app = express();
 const port = 3000;
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Use routes
 app.use("/", indexRoutes);
+app.use("/", signupRoutes);
 
 app.listen(port, () => {
   console.log(`Emotional Journey App listening on http://localhost:${port}`);
