@@ -12,7 +12,7 @@ const port = 3000;
 connectDB();
 
 // Setting EJS as the view engine
-app.set("view engine", "ejs");
+app.set("view engine", "pug");
 
 // Setting up the public folder to serve static files
 app.use(express.static(path.join(__dirname, "public")));

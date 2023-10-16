@@ -188,6 +188,7 @@ button:hover {
 .footer p {
   font-size: 0.7rem;
 }
+
 .link {
   color: var(--green);
   text-decoration: none;
@@ -197,6 +198,9 @@ button:hover {
   animation: breathe 15s ease-in-out 1;
 }
 
+.red-heart {
+  color: red;
+}
 @keyframes breathe {
   0%,
   100% {
