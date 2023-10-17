@@ -5,13 +5,15 @@ const User = require("../models/User");
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy(
-      { usernameField: "email" },
-      async (email, password, done) => {
+      { usernameField: "username" },
+      async (username, password, done) => {
         // Match user
-        const user = await User.findOne({ email: email });
+        const user = await User.findOne({ username: username });
 
         if (!user) {
-          return done(null, false, { message: "That email is not registered" });
+          return done(null, false, {
+            message: "That username is not registered",
+          });
         }
 
         // Match password
@@ -30,9 +32,12 @@ module.exports = function (passport) {
     done(null, user.id);
   });
 
-  passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-      done(err, user);
-    });
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await User.findById(id);
+      done(null, user);
+    } catch (err) {
+      done(err, null);
+    }
   });
 };

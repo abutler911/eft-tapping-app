@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div(class="center-container")
+    h2(class="form-heading") Affirmation Setup
+    form(action="/update-affirmations" method="POST" class="affirmation-form")
+      label(for="duration" class="form-label") Time between each affirmation:
+      select(id="duration" name="duration")
+        option(value="5") 5 seconds
+        option(value="10") 10 seconds
+        option(value="30") 30 seconds
+        option(value="60") 1 minute
+      br
+      br
+
+      label(for="affirmations" class="form-label") Update Affirmations:
+      textarea(id="affirmations" name="affirmations" rows="4" cols="50")
+      br
+      br
+      
+      input(type="submit" value="Update" class="submit-button")

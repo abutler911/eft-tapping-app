@@ -9,21 +9,24 @@ const passport = require("passport");
 const indexRoutes = require("./routes/indexRoutes");
 const signupRoutes = require("./routes/signupRoutes");
 const loginRoutes = require("./routes/loginRoutes");
+const affirmationRoutes = require("./routes/affirmationRoutes");
 
 const app = express();
 const port = 3000;
 
-require("./config/passport-config.js")(passport);
+// Initialize Passport config
+require("./config/passport-config")(passport);
 
+// Connect to Database
 connectDB();
+
+// Setup Express and Plugins
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-require("./config/passport-config");
-
+// Initialize Session
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -33,26 +36,33 @@ app.use(
   })
 );
 
+// Initialize Passport and Passport session
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Flash Messages
 app.use(flash());
 
+// Set up flash messages and other locals for templates
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   next();
 });
 
+// Define Routes
 app.use("/", indexRoutes);
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
+app.use("/", affirmationRoutes);
 
+// Test flash message
 app.get("/test-flash", (req, res) => {
   req.flash("error_msg", "User NOT created successfully");
   res.redirect("/login");
 });
 
+// Error handling
 app.use((err, req, res, next) => {
   console.error(`[Error] ${err.stack}`);
   res.status(err.status || 500);
@@ -62,6 +72,7 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Start the app
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port}`);
 });

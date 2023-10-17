@@ -9,7 +9,7 @@ router.get("/login", (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/affirmation",
+    successRedirect: "/affirmation-setup",
     failureRedirect: "/login",
     failureFlash: true,
   })
