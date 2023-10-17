@@ -2,16 +2,20 @@ extends layout
 
 block content
   div(class="center-container")
+    // Flash Messages
+    if success_msg
+      div(class="flash-success")
+        = success_msg
+
+    if error_msg
+      div(class="flash-error")
+        = error_msg
+
     h2(class="form-heading") Emotional Freedom Journey
-    h3(class="form-subheading") Sign Up
-    form(action="/signup" method="POST" class="signup-form")
+    h3(class="form-subheading") Log In
+    form(action="/login" method="POST" class="signup-form")
       label(for="username" class="form-label") Username:
       input(type="text" id="username" name="username" required class="form-input")
-      br
-      br
-
-      label(for="email" class="form-label") Email:
-      input(type="email" id="email" name="email" required class="form-input")
       br
       br
 

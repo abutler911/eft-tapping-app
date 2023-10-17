@@ -163,6 +163,71 @@ hr {
   display: flex;
   justify-content: center;
 }
+.fixed-width-button {
+  width: 10rem;
+}
+
+/* Form styling */
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.form-heading {
+  font-size: 2em;
+  text-align: center;
+  color: var(--green);
+}
+
+.form-subheading {
+  font-size: 1.5em;
+  color: var(--green);
+}
+
+.signup-form {
+  max-width: 400px;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.form-label {
+  font-family: "Cinzel", serif;
+  font-size: 1.5em;
+}
+
+.form-input {
+  width: 90%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1.4em;
+  display: block;
+  margin: 0 auto;
+}
+
+.submit-button {
+  background-color: var(--dark-blue);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+  font-size: 1.1em;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+}
+
+.submit-button:hover {
+  background-color: var(--light-blue);
+}
 
 button {
   background-color: var(--dark-blue);
@@ -201,6 +266,33 @@ button:hover {
 .red-heart {
   color: red;
 }
+
+/* Flash Messages */
+
+.flash-success {
+  background-color: rgba(152, 255, 176, 0.7);
+  border-color: #c3e6cb;
+  color: #00811e;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.flash-error {
+  background-color: rgba(255, 126, 137, 0.7);
+  border-color: #f5c6cb;
+  color: #a00a19;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 @keyframes breathe {
   0%,
   100% {
