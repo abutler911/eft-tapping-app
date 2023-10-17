@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  div(class="error-container")
+    h1 Oops, something went wrong.
+    h2 #{message}
+    
+    if error.stack
+      pre
+        code #{error.stack}

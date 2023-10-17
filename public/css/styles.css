@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "Cinzel";
-  src: url("fonts/Cinzel-Regular.otf") format("opentype");
+  src: url("/fonts/cinzel/Cinzel-Regular.otf") format("opentype");
 }
 
 body {
@@ -246,6 +246,39 @@ button {
 button:hover {
   background-color: var(--light-blue);
 }
+
+.error-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+}
+
+.error-container h1 {
+  font-size: 36px;
+  color: #ff0000;
+}
+
+.error-container h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.error-container pre {
+  text-align: left;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.error-container code {
+  font-size: 14px;
+}
+
 .footer {
   text-align: center;
   font-family: "Cinzel", serif;
@@ -266,7 +299,11 @@ button:hover {
 .red-heart {
   color: red;
 }
-
+.footer-tagline {
+  font-family: "Cinzel", serif;
+  text-transform: uppercase;
+  font-size: 0.4rem;
+}
 /* Flash Messages */
 
 .flash-success {
@@ -309,5 +346,20 @@ button:hover {
   }
   100% {
     background-color: var(--dark-blue);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .center-container {
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .header,
+  .control-container,
+  .affirmation-header,
+  #affirmation-container {
+    max-width: 800px;
+    margin: auto;
   }
 }
