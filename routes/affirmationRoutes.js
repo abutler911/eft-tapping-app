@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 
 router.get("/affirmation-setup", (req, res) => {
-  res.render("affirmation-setup");
+  res.render("affirmation-setup", { user: req.user });
 });
 
 router.post("/update-affirmations", async (req, res) => {

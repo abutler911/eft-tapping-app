@@ -2,6 +2,7 @@ extends layout
 
 block content
   div(class="center-container")
+    h1 Hello, #{user.username}  
     h2(class="form-heading") Affirmation Setup
     form(action="/update-affirmations" method="POST" class="affirmation-form")
       label(for="duration" class="form-label") Time between each affirmation:
