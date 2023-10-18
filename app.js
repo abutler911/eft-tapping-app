@@ -12,7 +12,7 @@ const loginRoutes = require("./routes/loginRoutes");
 const affirmationRoutes = require("./routes/affirmationRoutes");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Initialize Passport config
 require("./config/passport-config")(passport);
