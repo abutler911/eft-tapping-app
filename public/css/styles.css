@@ -367,6 +367,49 @@ button:hover {
   text-align: center;
 }
 
+/* Style for affirmation list */
+.affirmation-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.affirmation-list li {
+  background-color: var(--light-blue);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Style for prompt */
+.prompt {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.prompt a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* Additional styling for form */
+.affirmation-form {
+  background-color: var(--light-blue);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#duration {
+  margin-bottom: 20px;
+}
 @keyframes breathe {
   0%,
   100% {

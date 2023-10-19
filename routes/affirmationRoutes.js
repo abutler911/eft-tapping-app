@@ -2,26 +2,16 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
-router.get("/affirmation-setup", (req, res) => {
-  res.render("affirmation-setup", { user: req.user });
-});
-
-router.post("/update-affirmations", async (req, res) => {
-  const { duration, affirmations } = req.body;
-
-  // Assuming user id is stored in session after login
-  const userId = req.session.passport.user;
-
-  try {
-    await User.findByIdAndUpdate(userId, {
-      affirmationDuration: duration,
-      affirmations: affirmations.split("\n"),
-    });
-    res.redirect("/some-other-page");
-  } catch (error) {
-    console.log("Error updating user settings:", error);
-    res.status(500).send("Internal Server Error");
+router.get("/affirmation-setup", async (req, res) => {
+  // If req.user doesn't exist or is incomplete, fetch it from MongoDB
+  let user = req.user;
+  if (!user || !user.affirmations) {
+    const userId = req.session.passport.user; // Assuming you store user ID in session
+    user = await User.findById(userId);
   }
+
+  // Render the EJS template and pass the user object
+  res.render("affirmation-setup", { user });
 });
 
 module.exports = router;

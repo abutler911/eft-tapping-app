@@ -1,9 +1,19 @@
 extends layout
 
 block content
-  div(class="center-container")
-    h1 Hello, #{user.username}  
-    h2(class="form-heading") Affirmation Setup
+  div.center-container
+    h1 Hello, #{user.username}
+    h2.form-heading Affirmation Setup
+
+    // Check if affirmations exist
+    if user.affirmations && user.affirmations.length > 0
+      ul.affirmation-list
+        each affirmation in user.affirmations
+          li= affirmation
+    else
+      p.prompt You have no affirmations. Would you like to #[a(href="/affirmation-setup") enter some]?
+
+    // Your existing form for updating affirmations
     form(action="/update-affirmations" method="POST" class="affirmation-form")
       label(for="duration" class="form-label") Time between each affirmation:
       select(id="duration" name="duration")
@@ -14,9 +24,4 @@ block content
       br
       br
 
-      label(for="affirmations" class="form-label") Update Affirmations:
-      textarea(id="affirmations" name="affirmations" rows="4" cols="50")
-      br
-      br
-      
       input(type="submit" value="Update" class="submit-button")
