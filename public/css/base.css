@@ -1,0 +1,24 @@
+body,
+hr,
+.header,
+.header p,
+.header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Cinzel", serif;
+  background-color: #fbf2c4;
+  color: #382400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+hr {
+  border: none;
+  border-top: 3px solid var(--green);
+  border-radius: 9px;
+}

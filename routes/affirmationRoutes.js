@@ -3,15 +3,40 @@ const router = express.Router();
 const User = require("../models/User");
 
 router.get("/affirmation-setup", async (req, res) => {
-  // If req.user doesn't exist or is incomplete, fetch it from MongoDB
   let user = req.user;
   if (!user || !user.affirmations) {
-    const userId = req.session.passport.user; // Assuming you store user ID in session
+    const userId = req.session.passport.user;
     user = await User.findById(userId);
   }
 
-  // Render the EJS template and pass the user object
   res.render("affirmation-setup", { user });
+});
+
+router.get("/enter-affirmations", (req, res) => {
+  res.render("enter-affirmations");
+});
+
+router.post("/submit-affirmations", async (req, res) => {
+  const userId = req.session.passport.user; // Make sure the user is authenticated
+
+  try {
+    const user = await User.findById(userId);
+
+    if (user) {
+      user.affirmations = {
+        addressingInsecurities: req.body.addressingInsecurities,
+        shiftingToDesires: req.body.shiftingToDesires,
+        givingPermission: req.body.givingPermission,
+        affirmationsAndGratitude: req.body.affirmationsAndGratitude,
+      };
+
+      await user.save();
+      res.redirect("/affirmations"); // Redirect to a page to display affirmations
+    }
+  } catch (err) {
+    console.log("Error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 module.exports = router;

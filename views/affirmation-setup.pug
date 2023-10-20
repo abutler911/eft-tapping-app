@@ -11,17 +11,6 @@ block content
         each affirmation in user.affirmations
           li= affirmation
     else
-      p.prompt You have no affirmations. Would you like to #[a(href="/affirmation-setup") enter some]?
+      p.prompt You have no affirmations. Would you like to #[a(href="/enter-affirmations") enter some]?
 
-    // Your existing form for updating affirmations
-    form(action="/update-affirmations" method="POST" class="affirmation-form")
-      label(for="duration" class="form-label") Time between each affirmation:
-      select(id="duration" name="duration")
-        option(value="5") 5 seconds
-        option(value="10") 10 seconds
-        option(value="30") 30 seconds
-        option(value="60") 1 minute
-      br
-      br
-
-      input(type="submit" value="Update" class="submit-button")
+  

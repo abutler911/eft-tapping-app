@@ -410,6 +410,63 @@ button:hover {
 #duration {
   margin-bottom: 20px;
 }
+
+/* Make the affirmation form a flex container */
+.affirmation-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* For larger screens, use row layout */
+@media (min-width: 768px) {
+  .affirmation-form {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Style each section as a card */
+.affirmation-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .affirmation-form {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .affirmation-section {
+    width: calc(25% - 1rem); /* Four cards side by side */
+  }
+}
+
+/* For mobile */
+@media screen and (max-width: 768px) {
+  .affirmation-section {
+    width: 100%; /* Single column layout */
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+}
 @keyframes breathe {
   0%,
   100% {
