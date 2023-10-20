@@ -4,8 +4,14 @@
   font-family: "Cinzel", serif;
 }
 
-.footer p {
-  font-size: 0.7rem;
+.footer h3 {
+  font-size: 1rem;
+}
+
+.footer h3 > a {
+  color: var(--green);
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .red-heart {
@@ -14,6 +20,5 @@
 
 .footer-tagline {
   font-family: "Cinzel", serif;
-  text-transform: uppercase;
-  font-size: 0.4rem;
+  font-size: 0.5rem;
 }

@@ -8,6 +8,7 @@
 @import "responsive.css";
 @import "misc.css";
 @import "flash-messages.css";
+@import "buttons.css";
 
 @font-face {
   font-family: "Cinzel";
