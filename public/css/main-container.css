@@ -3,3 +3,26 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+/* Custom CSS for Landing Page */
+#landing-page {
+  background-color: #fbf2c4;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fixed-width-button {
+  width: 200px;
+}
+
+.lead {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+hr {
+  background-color: var(--green);
+}

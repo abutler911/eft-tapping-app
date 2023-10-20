@@ -21,4 +21,5 @@ hr {
   border: none;
   border-top: 3px solid var(--green);
   border-radius: 9px;
+  margin: 10px;
 }

@@ -1,15 +1,12 @@
 extends layout
 
 block content
-  div(id="landing-page")
-    div(class="header")
-      h1 Emotional Freedom Journey
+  div(id="landing-page" class="container-fluid")
+    div(class="header text-center py-5")
+      h1(class="display-4") Emotional Freedom Journey
       hr
-      p Emotional Freedom Techniques (EFT) Tapping is a self-help method designed to help manage stress, anxiety, and emotional imbalances. It combines elements of cognitive therapy with acupressure to provide a holistic approach to emotional well-being. By tapping on specific points on the body while focusing on particular thoughts and emotions, you can work on releasing energy blockages and restoring your mind's balance.
+      p(class="lead") Emotional Freedom Techniques (EFT) Tapping is a self-help method designed to help manage stress, anxiety, and emotional imbalances. It combines elements of cognitive therapy with acupressure to provide a holistic approach to emotional well-being. By tapping on specific points on the body while focusing on particular thoughts and emotions, you can work on releasing energy blockages and restoring your mind's balance.
       hr
-      div(class="control-container")
-        a(href="/login")
-          button(id="login-button" class="fixed-width-button") Login
-        a(href="/signup")
-          button(id="signup-button" class="fixed-width-button") Sign Up
-
+      div(class="control-container d-flex justify-content-center")
+        a(href="/login" class="btn btn-primary me-2 fixed-width-button") Login
+        a(href="/signup" class="btn btn-success fixed-width-button") Sign Up
