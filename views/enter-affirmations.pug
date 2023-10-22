@@ -1,33 +1,18 @@
 extends layout
 
 block content
-  div.main-container
-    div.center-container
+  div.main-container.container
+    div.center-container.text-center
       h1 Enter Your Affirmations
-      form(action="/submit-affirmations" method="POST" class="affirmation-form")
+      form(action="/submit-affirmations" method="POST", class="affirmation-form")
         
-        div.affirmation-section
-          h3 Addressing Insecurities
-          each point in ['topOfHead', 'eyebrow', 'sideOfEye', 'underEye', 'underNose', 'chin', 'collarbone', 'underArm']
-            label(for=`addressingInsecurities[${point}]`) #{point}
-            textarea(name=`addressingInsecurities[${point}]`, rows="2", cols="50")
-
-        div.affirmation-section
-          h3 Shifting to Desires
-          each point in ['topOfHead', 'eyebrow', 'sideOfEye', 'underEye', 'underNose', 'chin', 'collarbone', 'underArm']
-            label(for=`shiftingToDesires[${point}]`) #{point}
-            textarea(name=`shiftingToDesires[${point}]`, rows="2", cols="50")
-        
-        div.affirmation-section
-          h3 Giving Permission
-          each point in ['topOfHead', 'eyebrow', 'sideOfEye', 'underEye', 'underNose', 'chin', 'collarbone', 'underArm']
-            label(for=`givingPermission[${point}]`) #{point}
-            textarea(name=`givingPermission[${point}]`, rows="2", cols="50")
-
-        div.affirmation-section
-          h3 Affirmations and Gratitude
-          each point in ['topOfHead', 'eyebrow', 'sideOfEye', 'underEye', 'underNose', 'chin', 'collarbone', 'underArm']
-            label(for=`affirmationsAndGratitude[${point}]`) #{point}
-            textarea(name=`affirmationsAndGratitude[${point}]`, rows="2", cols="50")
-
-        input(type="submit" value="Submit" class="submit-button")
+        each section in ['Addressing Insecurities', 'Shifting to Desires', 'Giving Permission', 'Affirmations and Gratitude']
+          div.affirmation-section
+            h3 #{section}
+            div.row
+              each point in ['topOfHead', 'eyebrow', 'sideOfEye', 'underEye', 'underNose', 'chin', 'collarbone', 'underArm']
+                div.col-md-6.form-group
+                  label(for=`${section.toLowerCase().replace(/\s+/g, '')}[${point}]`) #{point}
+                  textarea.form-control(name=`${section.toLowerCase().replace(/\s+/g, '')}[${point}]`, rows="2")
+                
+        button.btn.btn-primary(type="submit") Submit

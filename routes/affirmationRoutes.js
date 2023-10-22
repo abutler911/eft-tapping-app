@@ -9,7 +9,7 @@ router.get("/affirmation-setup", async (req, res) => {
     user = await User.findById(userId);
   }
 
-  res.render("affirmation-setup", { user });
+  res.render("affirmation-setup", { user: user.toObject() });
 });
 
 router.get("/enter-affirmations", (req, res) => {
@@ -17,21 +17,27 @@ router.get("/enter-affirmations", (req, res) => {
 });
 
 router.post("/submit-affirmations", async (req, res) => {
-  const userId = req.session.passport.user; // Make sure the user is authenticated
+  const userId = req.session.passport.user;
+  console.log("Request body:", req.body);
 
   try {
     const user = await User.findById(userId);
+    console.log("User before update:", JSON.stringify(user, null, 2));
 
     if (user) {
       user.affirmations = {
-        addressingInsecurities: req.body.addressingInsecurities,
-        shiftingToDesires: req.body.shiftingToDesires,
-        givingPermission: req.body.givingPermission,
-        affirmationsAndGratitude: req.body.affirmationsAndGratitude,
+        addressingInsecurities: req.body.addressinginsecurities,
+        shiftingToDesires: req.body.shiftingtodesires,
+        givingPermission: req.body.givingpermission,
+        affirmationsAndGratitude: req.body.affirmationsandgratitude,
       };
 
-      await user.save();
-      res.redirect("/affirmations"); // Redirect to a page to display affirmations
+      console.log("User after update:", JSON.stringify(user, null, 2));
+
+      const result = await user.save();
+      console.log("Save result:", result);
+
+      res.redirect("/affirmation-setup");
     }
   } catch (err) {
     console.log("Error:", err);

@@ -5,12 +5,20 @@ block content
     h1 Hello, #{user.username}
     h2.form-heading Affirmation Setup
 
+    // Input for setting affirmation duration
+    form(action="/set-affirmation-duration" method="POST")
+      label(for="affirmationDuration") Set Duration (in seconds):
+      input(type="number" id="affirmationDuration" name="affirmationDuration" value=user.affirmationDuration || "")
+      input(type="submit" value="Set Duration")
+
     // Check if affirmations exist
-    if user.affirmations && user.affirmations.length > 0
-      ul.affirmation-list
-        each affirmation in user.affirmations
-          li= affirmation
+    if user.affirmations
+      each category, categoryName in user.affirmations
+        h3= categoryName
+        ul.affirmation-list
+          each affirmation, point in category
+            li #{point}: #{affirmation}
+      // Button to enter new affirmations
+      a.btn.btn-primary(href="/enter-affirmations") Enter New Affirmations
     else
       p.prompt You have no affirmations. Would you like to #[a(href="/enter-affirmations") enter some]?
-
-  
