@@ -11,17 +11,11 @@ router.get("/affirmation-setup", async (req, res) => {
 
   if (!user || !user.affirmations) {
     const userId = req.session.passport.user;
-    user = await User.findById(userId);
-    user = user ? JSON.parse(JSON.stringify(user)) : null; // Deep clone to plain object
+    user = await User.findById(userId).select(
+      "username affirmationDuration affirmations"
+    ); // Explicitly select fields
+    user = user ? user.toObject() : null; // Convert to plain object
   }
-
-  // Debugging Step 1: Check the Conversion
-  console.log(
-    "Is Plain Object?",
-    user instanceof Object &&
-      !(user instanceof Array) &&
-      !(user instanceof Function)
-  );
 
   const categoriesWithSpaces = {};
   if (user && user.affirmations) {
@@ -29,9 +23,6 @@ router.get("/affirmation-setup", async (req, res) => {
       categoriesWithSpaces[camelCaseToSpaces(key)] = value;
     }
   }
-
-  // Debugging Step 2: Check the Data
-  console.log("Categories with Spaces:", categoriesWithSpaces);
 
   res.render("affirmation-setup", { user, categoriesWithSpaces });
 });

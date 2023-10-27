@@ -62,6 +62,14 @@ app.get("/test-flash", (req, res) => {
   res.redirect("/login");
 });
 
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  req.flash("error_msg", "Please log in to view this resource");
+  res.redirect("/login");
+}
+
 // Error handling
 app.use((err, req, res, next) => {
   console.error(`[Error] ${err.stack}`);
