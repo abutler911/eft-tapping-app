@@ -7,24 +7,42 @@ function camelCaseToSpaces(str) {
 }
 
 router.get("/affirmation-setup", async (req, res) => {
+  // Fetch user data
   let user = req.user;
-
   if (!user || !user.affirmations) {
     const userId = req.session.passport.user;
-    user = await User.findById(userId).select(
-      "username affirmationDuration affirmations"
-    ); // Explicitly select fields
-    user = user ? user.toObject() : null; // Convert to plain object
+    user = await User.findById(userId);
   }
 
+  // Create a "display-friendly" version of the affirmation categories
   const categoriesWithSpaces = {};
-  if (user && user.affirmations) {
-    for (const [key, value] of Object.entries(user.affirmations)) {
-      categoriesWithSpaces[camelCaseToSpaces(key)] = value;
+  for (const [key, value] of Object.entries(user.affirmations)) {
+    const newKey = key.replace(/([A-Z])/g, " $1").toLowerCase(); // Converting camelCase to spaces
+    const cleanedValue = {};
+
+    // Only include known affirmation points
+    const knownPoints = [
+      "topOfHead",
+      "eyebrow",
+      "sideOfEye",
+      "underEye",
+      "underNose",
+      "chin",
+      "collarbone",
+      "underArm",
+    ];
+    for (const point of knownPoints) {
+      cleanedValue[point] = value[point];
     }
+
+    categoriesWithSpaces[newKey] = cleanedValue;
   }
 
-  res.render("affirmation-setup", { user, categoriesWithSpaces });
+  // Render the Pug template
+  res.render("affirmation-setup", {
+    user,
+    categoriesWithSpaces,
+  });
 });
 
 router.get("/enter-affirmations", (req, res) => {
