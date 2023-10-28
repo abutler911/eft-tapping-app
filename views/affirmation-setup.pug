@@ -13,16 +13,18 @@ block content
 
     // Check if affirmations exist
     if user.affirmations
-      each category, categoryName in categoriesWithSpaces
-        .card.mb-4
-          .card-header
-            h3= categoryName
-          .card-body
-            ul.affirmation-list.list-group
-              each affirmation, point in category
-                li.list-group-item #{point}: #{affirmation}
-          .card-footer
-            a.btn.btn-primary(href="/edit-affirmations/#{categoryName}") Edit
+      div.row  
+        each category, categoryName in categoriesWithSpaces
+          div.col-md-4  
+            .card.mb-4
+              .card-header
+                h3= categoryName
+              .card-body
+                ul.affirmation-list.list-group
+                  each affirmation, point in category
+                    li.list-group-item #{point}: #{affirmation}
+              .card-footer
+                a.btn.btn-primary(href="/edit-affirmations/#{categoryName}") Edit
       // Button to enter new affirmations
       a.btn.btn-primary(href="/enter-affirmations") Enter New Affirmations
     else
