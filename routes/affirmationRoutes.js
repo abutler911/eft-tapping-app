@@ -16,6 +16,8 @@ router.get("/affirmation-setup", async (req, res) => {
 
   // Create a "display-friendly" version of the affirmation categories
   const categoriesWithSpaces = {};
+  let hasAffirmations = false; // New flag to indicate if any affirmations exist
+
   for (const [key, value] of Object.entries(user.affirmations)) {
     const newKey = key.replace(/([A-Z])/g, " $1").toLowerCase(); // Converting camelCase to spaces
     const cleanedValue = {};
@@ -31,8 +33,12 @@ router.get("/affirmation-setup", async (req, res) => {
       "collarbone",
       "underArm",
     ];
+
     for (const point of knownPoints) {
       cleanedValue[point] = value[point];
+      if (value[point]) {
+        hasAffirmations = true;
+      }
     }
 
     categoriesWithSpaces[newKey] = cleanedValue;
@@ -42,6 +48,7 @@ router.get("/affirmation-setup", async (req, res) => {
   res.render("affirmation-setup", {
     user,
     categoriesWithSpaces,
+    hasAffirmations,
   });
 });
 

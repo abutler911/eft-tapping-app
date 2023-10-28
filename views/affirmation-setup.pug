@@ -1,31 +1,33 @@
 extends layout
 
 block content
-  div.center-container
-    h1 Hello, #{user.username}
-    h2.form-heading Affirmation Setup
+  div.container.my-5
+    div.text-center
+      h1 Hello, #{user.username}
+      h2.form-heading Affirmation Setup
 
-    // Input for setting affirmation duration
-    form(action="/set-affirmation-duration" method="POST")
-      label(for="affirmationDuration") Set Duration (in seconds):
-      input(type="number" id="affirmationDuration" name="affirmationDuration" value=user.affirmationDuration || "")
-      input(type="submit" value="Set Duration")
+      // Input for setting affirmation duration
+      div.d-flex.justify-content-center
+        form(action="/set-affirmation-duration" method="POST")
+          label(for="affirmationDuration") Set Duration (in seconds):
+          input(type="number" id="affirmationDuration" name="affirmationDuration" value=user.affirmationDuration || "" class="ml-2")
+          input(type="submit" value="Set Duration" class="btn btn-primary ml-2")
 
-    // Check if affirmations exist
-    if user.affirmations
-      div.row  
-        each category, categoryName in categoriesWithSpaces
-          div.col-md-4  
-            .card.mb-4
-              .card-header
-                h3= categoryName
-              .card-body
-                ul.affirmation-list.list-group
-                  each affirmation, point in category
-                    li.list-group-item #{point}: #{affirmation}
-              .card-footer
-                a.btn.btn-primary(href="/edit-affirmations/#{categoryName}") Edit
-      // Button to enter new affirmations
-      a.btn.btn-primary(href="/enter-affirmations") Enter New Affirmations
-    else
-      .alert.alert-warning You have no affirmations. Would you like to #[a(href="/enter-affirmations") enter some]?
+      if hasAffirmations
+        div.row.justify-content-center
+          each category, categoryName in categoriesWithSpaces
+            div.col-md-4.my-2
+              .card
+                .card-header
+                  h3= categoryName
+                .card-body
+                  ul.affirmation-list.list-group
+                    each affirmation, point in category
+                      li.list-group-item #{point}: #{affirmation}
+                .card-footer
+                  a.btn.btn-primary(href="/edit-affirmations/#{categoryName}") Edit
+        // Button to enter new affirmations
+        div.text-center
+          a.btn.btn-primary(href="/enter-affirmations") Enter New Affirmations
+      else
+        div.alert.alert-warning.text-center You have no affirmations. Would you like to #[a(href="/enter-affirmations") enter some]?

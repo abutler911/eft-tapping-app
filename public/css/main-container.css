@@ -18,6 +18,10 @@
   width: 200px;
 }
 
+.container {
+  max-width: 90%;
+}
+
 .lead {
   font-size: 1.2rem;
   margin: 1rem 0;

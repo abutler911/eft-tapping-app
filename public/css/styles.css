@@ -14,3 +14,12 @@
   font-family: "Cinzel";
   src: url("/fonts/cinzel/Cinzel-Regular.otf") format("opentype");
 }
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header,
+.card-footer {
+  background-color: #f8f9fa;
+}
