@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  div.container.my-5
+    div.text-center
+      h1 Hello, #{user.username}
+      h2 Tapping Instructions
+      p Here are instructions on how to do tapping...
+      button.btn.btn-success(onclick="startTappingProcess()") Start Tapping Process

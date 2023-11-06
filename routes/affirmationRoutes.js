@@ -85,4 +85,17 @@ router.post("/submit-affirmations", async (req, res) => {
   }
 });
 
+router.get("/start-tapping", (req, res) => {
+  // Render the tapping page
+  res.render("start-tapping", { user: req.user });
+});
+
+router.post("/begin-tapping", (req, res) => {
+  // Start the tapping process here
+  // You can add logic to start the process, like setting timers, etc.
+
+  // Send back a response to the client to indicate the process has started
+  res.json({ success: true, message: "Tapping process initiated." });
+});
+
 module.exports = router;

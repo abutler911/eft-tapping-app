@@ -12,6 +12,7 @@ block content
           label(for="affirmationDuration") Set Duration (in seconds):
           input(type="number" id="affirmationDuration" name="affirmationDuration" value=user.affirmationDuration || "" class="ml-2")
           input(type="submit" value="Set Duration" class="btn btn-primary ml-2")
+          button.btn.btn-success(onclick="startTapping()") Start Tapping
 
       if hasAffirmations
         div.row.justify-content-center
